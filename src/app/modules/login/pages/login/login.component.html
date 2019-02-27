@@ -1,0 +1,57 @@
+<div class="city-background">
+  <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="card form-card">
+      <div class="card-header position-relative">
+        <h2>Log In</h2>
+        <div *ngIf="loading" class="loader loader--right"></div>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" [ngClass]="tooltipColor(f.username, submitted)"><i class="fa fa-user"></i></span>
+            </div>
+            <div *ngIf="showTooltip(f.username, submitted)" class="error-tooltip">
+              <span *ngFor="let error of displayErrors(f.username, 'Username')"><i class="fa fa-circle"></i>{{ error }}</span>
+            </div>
+            <input id="username" name="username" formControlName="username" type="text" class="form-control" data-floating="username" />
+            <label class="form-control-placeholder" for="username">Username</label>
+          </div>
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" [ngClass]="tooltipColor(f.password, submitted)"><i class="fa fa-key"></i></span>
+            </div>
+            <div *ngIf="showTooltip(f.password, submitted)" class="error-tooltip">
+              <span *ngFor="let error of displayErrors(f.password, 'Password')"><i class="fa fa-circle"></i>{{ error }}</span>
+            </div>
+            <input id="password" name="password" formControlName="password" type="password" class="form-control" data-floating="password" />
+            <label class="form-control-placeholder" for="password">Password</label>
+          </div>
+
+          <div class="row">
+            <div class="col-6 remember-me">
+              <input id="remember-me" formControlName="rememberMe" type="checkbox" />
+              <label for="remember-me">Remember Me</label>
+            </div>
+            <div class="col-6 text-right">
+              <button type="submit" class="btn btn-submit">Log In</button>
+            </div>
+          </div>
+
+          <div class="error-box">
+            <div *ngIf="error">{{ error }}</div>
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="text-center">Don't have an account? <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Sign Up</a></div>
+        <div class="text-center">
+          <a href="#">Forgot Your Password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

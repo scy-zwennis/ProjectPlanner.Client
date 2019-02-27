@@ -1,0 +1,212 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'mixins';
+
+$tooltipBackground: rgba(#f53b3b, .95);
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.city-background {
+  height: 100%;
+  background-image: url('/assets/images/New-York-City-Wallpapers.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+  cursor: text;
+}
+
+.floating-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+  color: #ffffff;
+}
+
+// ====================== FORM CARD ====================
+.card {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+
+  @include wide-phone {
+    width: 85%;
+  }
+
+  @include tablet {
+    width: 65%;
+  }
+
+  @include desktop {
+    width: 500px;
+  }
+
+  .card-header,
+  .card-footer {
+    color: #fff;
+  }
+
+  .card-header {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .card-footer {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  a:link,
+  a:visited {
+    color: #ffc107;
+  }
+
+  .input-group > .form-control {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+  }
+
+  .input-group-text {
+    color: #fff;
+    border: none;
+  }
+}
+// =====================================================
+
+
+
+// ====================== FORM INPUT FEEDBACK ==========================
+.input-neutral {
+  background-color: #a27d48;
+}
+
+.input-valid {
+  background-color: #4db71f;
+}
+
+.input-invalid {
+  background-color: #f53b3b;
+}
+
+.input-group-prepend:hover + .error-tooltip {
+  display: inline-block;
+}
+
+.error-tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 100% 50%;
+  transform: translateX(calc(-100% - 30px));
+  border-radius: 10px;
+  background: $tooltipBackground;
+  padding: 7.5px 10px;
+  color: #fff;
+
+  span {
+    display: block;
+  }
+
+  i {
+    font-size: 5px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 15px;
+    position: absolute;
+    top: 15px;
+    right: -14px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent $tooltipBackground;
+  }
+}
+// =====================================================================
+
+
+
+// ================== POSITION UTILITIES ===============
+.l-0 {
+  left: 0;
+}
+
+.l-1 {
+  left: 1rem;
+}
+
+.l-2 {
+  left: 2rem;
+}
+// =====================================================
+
+.btn-submit {
+  padding: 5px 35px;
+  color: #fff;
+  background-color: #a27d48;
+
+  &:hover {
+    color: #fff;
+    background-color: #946e37;
+  }
+}
+
+.error-box {
+  font-size: 1rem;
+  color: red;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 2s linear infinite;
+
+  &--right {
+    position: absolute;
+    top: 30%;
+    right: 25px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
